@@ -1,1 +1,1 @@
-// content for career-ai-client/src/App.js
+import React from 'react'; export default function App() { return <h1>Career AI Frontend</h1>; }

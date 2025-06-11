@@ -1,12 +1,32 @@
-// content for docker-compose.yml
+version: "3.9"
 services:
   web:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/career_ai
+    depends_on:
+      - db
+
   db:
-    image: postgres
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: career_ai
+    ports:
+      - "5432:5432"
+
   frontend:
     build:
       context: .
       dockerfile: frontend.Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - web

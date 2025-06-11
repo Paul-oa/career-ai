@@ -1,1 +1,7 @@
-// content for requirements.txt
+fastapi
+uvicorn
+sqlalchemy
+passlib[bcrypt]
+aiofiles
+openai
+psycopg2-binary
