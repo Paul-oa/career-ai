@@ -1,0 +1,1 @@
+// content for career-ai-client/src/index.js
